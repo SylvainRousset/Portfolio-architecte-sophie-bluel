@@ -1,7 +1,7 @@
 
 
-// 1. ------------------ SÉLECTIONS DU DOM ------------------ //
-// URL de l'API pour récupérer les travaux
+
+// 1. URL de l'API pour récupérer les travaux
 const apiUrl = "http://localhost:5678/api/"; // Définit l'URL de base de l'API
 
 const apiUrlWorks = `${apiUrl}works`; 
@@ -258,7 +258,7 @@ async function deleteWork(work, workElement, modalGallery) {
 
 // ajout categorie menu déroulant
 async function populateCategoryOptions() {
-  const categories = await fetchCategories(); // Récupère les catégories depuis l'API
+  const categories = await fetchCategories(); 
   const categorySelect = document.getElementById('category');
 
   if (categories && categorySelect) {
