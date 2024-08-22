@@ -238,12 +238,8 @@ async function deleteWork(work, workElement, modalGallery) {
       });
 
       if (response.ok) {
-        // Si la suppression est réussie, supprimer l'élément du DOM
         modalGallery.removeChild(workElement);
-
-        // Mettre à jour la galerie principale si nécessaire
         const updatedWorks = await fetchWorks(); 
-
         displayWorks(updatedWorks); 
         displayModalGallery(updatedWorks);
         
@@ -440,7 +436,6 @@ function openAddProjectModal() {
   toggleElementVisibility(modalDelete, 'none');
   resetPreviewImage()
   toggleElementVisibility(uploadContent, 'block');
-  // Remplit la liste déroulante avec les catégories
   handleImagePreview();
   populateCategoryOptions();
   handleAddProjectForm();
