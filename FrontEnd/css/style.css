@@ -1,0 +1,504 @@
+/* ---------- VARIABLES ---------- */
+:root {
+  --body-color: #fffef9;
+  --primary-color: #1d6154;
+  --secondary-color: #b1663c;
+  --accent-color: #007bff;
+  --hover-color: #0056b3;
+  --white-color: #ffffff;
+}
+
+/* ---------- RESET CSS ---------- */
+/* http://meyerweb.com/eric/tools/css/reset/ v2.0 | 20110126 License: none (public domain) */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var, b, u, i, center,
+dl, dt, dd, ol, ul, li, fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, figure, figcaption,
+footer, header, hgroup, menu, nav, output, ruby, section,
+summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  cursor: default;
+}
+
+button, a, input[type="button"], input[type="submit"], 
+.upload-icon, .close-btn, .back-btn i, .delete-icon, 
+#category {
+  cursor: pointer;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, 
+hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+  background-color: var(--body-color);
+}
+
+ol, ul {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/** end reset css**/
+
+/* ---------- GLOBAL STYLES ---------- */
+body {
+  max-width: 1140px;
+  margin: auto;
+  font-family: "Work Sans";
+  font-size: 14px;
+}
+
+/* ---------- EDIT MODE BANNER ---------- */
+#edit-mode-banner {
+  background-color: black;
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+  top: 0;
+  width: 100%;
+}
+
+#edit-mode-banner p {
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#edit-mode-banner i {
+  margin-right: 8px;
+  font-size: 14px;
+}
+
+/* ---------- HEADER ---------- */
+header {
+  display: flex;
+  justify-content: space-between;
+  margin: 50px 0;
+}
+
+nav ul {
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+}
+
+nav li {
+  padding: 0 20px;
+  font-size: 16px;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+}
+
+header nav ul li img {
+  width: 16px;
+  height: 16px;
+  padding: 8px;
+  object-fit: contain;
+}
+
+li:hover {
+  color: var(--secondary-color);
+}
+
+/* ---------- SECTION ---------- */
+section {
+  margin: 50px 0;
+}
+
+h1 {
+  display: flex;
+  flex-direction: column;
+  font-family: "Syne";
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--secondary-color);
+}
+
+h1 > span {
+  font-family: "Work Sans";
+  font-size: 10px;
+  letter-spacing: 0.1em;
+}
+
+h2 {
+  font-family: "Syne";
+  font-weight: 700;
+  font-size: 30px;
+  color: var(--primary-color);
+}
+
+/* ---------- INTRODUCTION SECTION ---------- */
+#introduction {
+  display: flex;
+  align-items: center;
+}
+
+#introduction figure {
+  flex: 1;
+}
+
+#introduction img {
+  display: block;
+  margin: auto;
+  width: 80%;
+}
+
+#introduction article {
+  flex: 1;
+}
+
+#introduction h2 {
+  margin-bottom: 1em;
+}
+
+#introduction p {
+  margin-bottom: 0.5em;
+}
+
+/* ---------- PORTFOLIO SECTION ---------- */
+.portfolio-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 100px;
+}
+
+.edit-btn {
+  padding: 10px 20px;
+  font-size: 14px;
+  background-color: white;
+  color: black;
+  border: none;
+  margin-left: 10px;
+}
+
+.edit-btn i {
+  margin-right: 8px;
+  font-size: 16px;
+}
+
+.category-buttons {
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.category-btn {
+  font-family: "Syne";
+  font-weight: 700;
+  font-size: 1.2em;
+  margin-right: 10px;
+  padding: 10px 20px;
+  border-color: var(--primary-color);
+  background-color: var(--white-color);
+  color: var(--primary-color);
+  border-radius: 60px;
+}
+
+.category-btn:hover {
+  background-color: var(--primary-color);
+  color: var(--white-color);
+}
+
+.gallery {
+  width: 90%;
+  display: grid;
+  margin: auto;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+}
+
+.gallery figure {
+  margin: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 450px;
+  padding-bottom: 10px;
+}
+
+.gallery figcaption {
+  margin-top: 10px;
+  text-align: center;
+  width: 100%;
+  padding: 5px 0;
+  font-size: 14px;
+}
+
+.gallery img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+
+/* ---------- FOOTER ---------- */
+footer nav ul {
+  display: flex;
+  justify-content: flex-end;
+  margin: 2em;
+}
+
+
+
+/* ----------  MODAL ---------- */
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 5% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 600px;
+  height: auto;
+  max-height: 90%;
+  overflow-y: auto;
+}
+
+.close-btn-container {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px 20px;
+}
+
+.close-btn {
+  font-size: 30px;
+}
+
+.modal-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  grid-auto-rows: 150px;
+  grid-gap: 20px;
+  margin: 60px;
+}
+
+.modal-gallery figure {
+  position: relative;
+  background: #f9f9f9;
+}
+
+.modal-gallery img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  display: block;
+  margin-bottom: 10px;
+  cursor: default;
+}
+
+.delete-icon {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  font-size: 10px;
+  color: white;
+  background-color: black;
+  padding: 5px;
+}
+
+/* ----------  EDIT MODAL ---------- */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+.back-btn i {
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.modal h2 {
+  display: flex;
+  justify-content: center;
+  font-size: 20px;
+  margin-top: 30px;
+  color: black;
+}
+
+
+.upload-photo-container {
+  width: 80%;
+  height: 300px;
+  border: 2px dashed #ccc;
+  background-color: #e8f1f6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30px auto;
+  position: relative;
+}
+
+.upload-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.upload-photo-label {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  text-align: center;
+  margin: 0;
+}
+.upload-image-icon {
+  font-size: 60px;
+  color: #cbd6dc;
+  margin-bottom: 20px;
+}
+
+.upload-icon {
+  display: flex;
+  font-size: 26px;
+  border-radius: 60px;
+  color: #34678d;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  background-color: #cbd6dc;
+}
+
+#preview-image {
+  display: none;
+  height: 100%;
+  object-fit: contain;
+  z-index: 1;
+}
+
+input[type="file"] {    /*cache le design par default*/
+  display: none;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  text-align: left;
+  width: 80%;
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: none;
+  border: 2px solid #f4f4f4;
+  font-size: 16px;
+  box-sizing: border-box;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2), -2px -2px 5px rgba(255, 255, 255, 0.5);
+}
+.modal-separator {
+  border: none;
+  border-top: 1px solid #ccc;
+  margin: 40px 80px;
+}
+
+.validate-btn-container{
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.validate-btn {
+  flex: 1;
+  padding: 10px 30px;
+  font-size: 16px;
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  border: none;
+  border-radius: 60px;
+  max-width: 250px;
+}
+/* ---------- FORM CONTAINER PAGE ---------- */
+.login-container {
+  transform: translateY(50%);
+}
+
+.form-container {
+  width: 50%;
+  margin: auto;
+}
+
+.form-container > * {
+  text-align: center;
+}
+
+.form-container h2 {
+  margin-bottom: 20px;
+}
+
+.form-container form {
+  text-align: left;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-container input {
+  height: 50px;
+}
+
+label {
+  margin: 2em 0 1em 0;
+}
+
+.forgot-password {
+  margin-top: 10px;
+  text-align: center;
+  text-decoration: underline;
+  color: black;
+}

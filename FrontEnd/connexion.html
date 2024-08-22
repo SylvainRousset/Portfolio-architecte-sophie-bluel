@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8">
+    <title>Connexion</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- important rendu page diff appareils -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap"
+      rel="stylesheet">
+    <meta name="description" content="">
+    <link rel="stylesheet" href="./css/style.css">
+  </head>
+  <body>
+    <header>
+      <h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
+      <nav>
+        <ul>
+          <li><a href="projets.html">projets</a></li>
+          <li><a href="contact.html">contact</a></li>
+          <li><a href="connexion.html" id="auth-link">login</a></li>
+          <!-- Lien vers la page de connexion -->
+          <li>
+            <a href="https://www.instagram.com" target="_blank">
+              <img src="./assets/icons/instagram.png" alt="Instagram">
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="login-container form-container">
+      <h2>Log in</h2>
+      <p id="error-message" style="color: black; display: none">
+        Email ou mot de passe incorrect.
+      </p>
+      <form id="login-form">
+        <label for="email">E-mail :</label>
+        <input class="input-field" type="email" id="email" name="email" required autocomplete="username">
+
+        <label for="password">Mot de passe :</label>
+        <input class="input-field" type="password" id="password" name="password" required autocomplete="current-password">
+        <div class="validate-btn-container">
+          <input class="validate-btn" type="submit" value="Se connecter">
+        </div>
+        <!-- Lien pour le mot de passe oublié -->
+        <a href="#" class="forgot-password">Mot de passe oublié ?</a>
+      </form>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
