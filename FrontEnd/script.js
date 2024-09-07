@@ -1,5 +1,5 @@
 // 1. URL de l'API pour récupérer les travaux
-const apiUrl = "http://localhost:5678/api/"; // Définit l'URL de base de l'API
+const apiUrl = "http://localhost:5678/api/"; 
 
 const apiUrlWorks = `${apiUrl}works`; 
 const apiCategoriesUrl = `${apiUrl}categories`; 
