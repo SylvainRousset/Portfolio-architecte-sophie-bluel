@@ -1,6 +1,3 @@
-
-
-
 // 1. URL de l'API pour récupérer les travaux
 const apiUrl = "http://localhost:5678/api/"; // Définit l'URL de base de l'API
 
@@ -352,9 +349,15 @@ function addWorkToModalGallery(work) {
 // Fonction pour gérer la soumission du formulaire d'ajout de projet
 function handleAddProjectForm() {
   const addProjectForm = document.getElementById('add-project-form');
-  if (addProjectForm) {
+  const submitButton = addProjectForm.querySelector('button[type="submit"]');
+
+  // Vérifie si l'écouteur est déjà présent
+  if (addProjectForm.dataset.listener !== "true") {
+    addProjectForm.dataset.listener = "true"; // Marque comme étant écouté une seule fois
+
     addProjectForm.addEventListener('submit', async (event) => {
       event.preventDefault();
+      submitButton.disabled = true; // Désactive le bouton pendant la soumission
       const formData = new FormData(event.target);
 
       try {
@@ -375,8 +378,7 @@ function handleAddProjectForm() {
           addWorkToGallery(newWork);
           addWorkToModalGallery(newWork);
           event.target.reset();
-          closeAllModal()
-         
+          closeAllModal();
         } else {
           console.error('Erreur lors de l\'ajout du projet:', response.statusText);
           alert(`Erreur lors de l'ajout du projet: ${response.statusText}`);
@@ -384,11 +386,12 @@ function handleAddProjectForm() {
       } catch (error) {
         console.error('Erreur inattendue lors de l\'envoi des données:', error);
         alert(`Erreur inattendue: ${error.message}`);
+      } finally {
+        submitButton.disabled = false; // Réactive le bouton après le traitement
       }
     });
   }
 }
-
 // 7. ------------------ GESTION OUVERTURE ET FERMETURE DES MODALES ------------------ //
 const addProjectModal = document.getElementById('add-project-modal');
 const modalDelete = document.getElementById("modal-delete"); 
@@ -440,13 +443,15 @@ function openAddProjectModal() {
   populateCategoryOptions();
   handleAddProjectForm();
 }
-
+function resetAddProjectForm (){
+  const addProjectForm = document.getElementById("add-project-form"); 
+  addProjectForm.reset();
+  resetPreviewImage();
+}
 
 
 function returnToGalleryModalDelete() {
-  const addProjectForm = document.getElementById("add-project-form"); 
-  addProjectForm.reset()
-  resetPreviewImage()
+  resetAddProjectForm ()
   toggleElementVisibility(addProjectModal, 'none');
   toggleElementVisibility(modalDelete, 'block');
 
@@ -458,15 +463,19 @@ function handleModalCloseOnClickOutside(closeModalCallback) {
     const modals = document.querySelectorAll(".modal");
     modals.forEach(modal => {
       if (event.target === modal) {
+        
+        resetAddProjectForm ()
         closeModalCallback();
+        
       }
     });
   });
+  
 }
 
 function closeAllModal() {
-  
   if (addProjectModal && modalDelete) {
+    resetAddProjectForm ()
     toggleElementVisibility(addProjectModal, 'none');
     toggleElementVisibility(modalDelete, 'none');
   }
