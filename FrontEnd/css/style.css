@@ -226,7 +226,10 @@ h2 {
   color: var(--primary-color);
   border-radius: 60px;
 }
-
+.active-btn {
+  background-color: var(--primary-color);
+  color: var(--white-color);
+}
 .category-btn:hover {
   background-color: var(--primary-color);
   color: var(--white-color);
@@ -416,8 +419,15 @@ footer nav ul {
   height: 100%;
   object-fit: contain;
   z-index: 1;
+  cursor: pointer;
 }
-
+#error-message {
+  text-align: center;
+  color: red;
+  display: none; /* Masqué par défaut */
+  margin-top: 10px;
+  font-size: 14px;
+}
 input[type="file"] {    /*cache le design par default*/
   display: none;
 }

@@ -131,6 +131,7 @@ async function displayCategoryButtons(works) {
   allButton.classList.add("category-btn");
   allButton.addEventListener("click", () => {
     displayWorks(works); 
+    setActiveButton(allButton); 
   });
   categoryButtonsContainer.appendChild(allButton);
 
@@ -141,11 +142,25 @@ async function displayCategoryButtons(works) {
 
     button.addEventListener("click", () => {
       filterWorksByCategory(works, category.id); 
+      setActiveButton(button);
     });
 
     categoryButtonsContainer.appendChild(button);
   });
 }
+
+//  garder actif le background des travaux.
+function setActiveButton(activeButton) {
+  const categoryButtons = document.querySelectorAll('.category-btn');
+  categoryButtons.forEach(btn => btn.classList.remove('active-btn'));
+
+  activeButton.classList.add('active-btn');
+}
+
+
+
+
+
 
 // 5. ------------------ GESTION CONNEXION MODE EDITEUR------------------ //
 
@@ -285,8 +300,22 @@ function handleImagePreview() {
     imageInput.addEventListener('change', function(event) {
       const file = event.target.files[0];
       const previewImage = document.getElementById('preview-image');
+      const maxSizeInMB = 4; 
+      const maxSizeInBytes = maxSizeInMB * 1024 * 1024; 
+      const errorMessage = document.getElementById('error-message');
+      
+      if (file.size > maxSizeInBytes) {
+        errorMessage.textContent = `La taille de l'image ne doit pas dépasser ${maxSizeInMB} Mo.`;
+        errorMessage.style.display = 'block';
+        imageInput.value = ''; // Réinitialise l'entrée
+        previewImage.style.display = 'none';
+        uploadContent.style.display = 'block';
+        return;
+      }
+
     
       if (file) {
+        errorMessage.style.display = 'none';
         const reader = new FileReader();
         reader.onload = function(e) {
           previewImage.src = e.target.result;
@@ -300,6 +329,9 @@ function handleImagePreview() {
           uploadContent.style.display = 'block';
         }
       }
+    });
+    previewImage.addEventListener('click', function() {
+      imageInput.click(); // Simule un clic sur le champ input de fichier
     });
   }
 }
@@ -353,11 +385,11 @@ function handleAddProjectForm() {
 
   // Vérifie si l'écouteur est déjà présent
   if (addProjectForm.dataset.listener !== "true") {
-    addProjectForm.dataset.listener = "true"; // Marque comme étant écouté une seule fois
+    addProjectForm.dataset.listener = "true"; // 
 
     addProjectForm.addEventListener('submit', async (event) => {
       event.preventDefault();
-      submitButton.disabled = true; // Désactive le bouton pendant la soumission
+      submitButton.disabled = true; 
       const formData = new FormData(event.target);
 
       try {
