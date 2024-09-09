@@ -147,6 +147,7 @@ async function displayCategoryButtons(works) {
 
     categoryButtonsContainer.appendChild(button);
   });
+    allButton.click();
 }
 
 //  garder actif le background des travaux.
